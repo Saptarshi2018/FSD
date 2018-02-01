@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Stock Trading</title>
+<script>
+	
+	function loaddata()
+	{
+		if(typeof(Storage) !== "undefined")
+		{
+				if(localStorage.getItem('wipro'))
+				{
+					var wipro=parseInt(localStorage.getItem('wipro'));
+					document.getElementById("wipro").value=parseFloat(12.48*wipro).toFixed(2);
+
+				}
+				if(localStorage.getItem('infosys'))
+				{
+					var infy=parseInt(localStorage.getItem('infosys'));
+					document.getElementById("infosys").value=parseFloat(12.48*infy).toFixed(2);
+
+				}
+				if(localStorage.getItem('tcs'))
+				{
+					var tcs=parseInt(localStorage.getItem('tcs'));
+					document.getElementById("tcs").value=parseFloat(12.48*tcs).toFixed(2);
+
+				}
+				if(localStorage.getItem('techm'))
+				{
+					var techm=parseInt(localStorage.getItem('techm'));
+					document.getElementById("techm").value=parseFloat(12.48*techm).toFixed(2);
+
+				}
+		}
+		else 
+		{
+			console.log('localStorage Not Available');
+		}
+
+	}
+	function submit()
+	{
+		if(typeof(Storage) !== "undefined"){
+			var name=document.getElementById("tname").value;
+			var quantity=parseInt(document.getElementById("quan").value);
+			var valamnt=quantity%10;
+			if(quantity>=10 && quantity<=100 && valamnt==0)
+			{
+				
+				console.log(valamnt);
+			}
+			else
+			{
+				window.alert("Invalid amount !");
+				return;
+			}
+			//var wipro=document.getElementById("wipro").value;
+					// Store an item
+			if(name=="WIPRO" || name=="wipro" || name=="Wipro")
+			{
+				if(localStorage.getItem('wipro'))
+				{
+					var wipro=parseInt(localStorage.getItem('wipro'));
+					quantity=wipro+quantity;
+					localStorage.setItem('wipro', quantity);
+					document.getElementById("wipro").value=parseFloat(12.48*quantity).toFixed(2);
+
+				}
+				else
+				{
+					localStorage.setItem('wipro', quantity);
+					document.getElementById("wipro").value=parseFloat(12.48*quantity).toFixed(2);
+				}
+				
+			}
+
+			//infosys
+			else if(name=="INFOSYS" || name=="Infosys" || name=="infosys" || name=="infy")
+			{
+				if(localStorage.getItem('infosys'))
+				{
+					var infy=parseInt(localStorage.getItem('infosys'));
+					quantity=infy+quantity;
+					localStorage.setItem('infosys', quantity);
+					document.getElementById("infosys").value=parseFloat(12.48*quantity).toFixed(2);
+
+				}
+				else
+				{
+					localStorage.setItem('infosys', quantity);
+					document.getElementById("infosys").value=parseFloat(12.48*quantity).toFixed(2);
+				}
+				
+			}
+			//tcs
+			else if(name=="tcs" || name=="TCS" || name=="Tcs")
+			{
+				if(localStorage.getItem('tcs'))
+				{
+					var tcs=parseInt(localStorage.getItem('tcs'));
+					quantity=tcs+quantity;
+					localStorage.setItem('tcs', quantity);
+					document.getElementById("tcs").value=parseFloat(12.48*quantity).toFixed(2);
+
+				}
+				else
+				{
+					localStorage.setItem('tcs', quantity);
+					document.getElementById("tcs").value=parseFloat(12.48*quantity).toFixed(2);
+				}
+				
+			}
+			//techm
+			else if(name=="TECHM" || name=="Techm" || name=="techm")
+			{
+				if(localStorage.getItem('techm'))
+				{
+					var techm=parseInt(localStorage.getItem('techm'));
+					quantity=techm+quantity;
+					localStorage.setItem('techm', quantity);
+					document.getElementById("techm").value=parseFloat(12.48*quantity).toFixed(2);
+
+				}
+				else
+				{
+					localStorage.setItem('techm', quantity);
+					document.getElementById("techm").value=parseFloat(12.48*quantity).toFixed(2);
+				}
+				
+			}
+			else
+			{
+				window.alert("Not a valid name!");
+			}
+			
+
+			// Remove an item
+			//localStorage.removeItem('name');
+
+			// Get Item
+			console.log(localStorage.wipro);
+
+		/*	if(localStorage.name){
+				document.getElementById('name').innerHTML=localStorage.getItem('name');
+			} else {
+				document.getElementById('name').innerHTML='No Name Found';
+			}*/
+		} else {
+			console.log('localStorage Not Available');
+		}
+
+		
+	}
+</script>
+
+<style>
+body {
+background: gray;
+color: white;
+}
+#detail
+{
+width: 300px;
+hight:200px;
+padding-left: 250px;
+
+/*float:left;*/
+}
+#data
+{
+width: 300px;
+hight:200px;
+padding-left: 250px;
+/*float:right;*/
+}
+td {
+border: 1px black dashed;
+
+}
+#ticker, #price
+{
+width: 150px;
+text-align: center;
+}
+h1 {
+width: 300px;
+
+text-align: center;
+
+}
+table {
+	border: 5px black solid;
+}
+</style>
+</head>
+<body onload="loaddata()">
+<div id="detail" align="center">
+<table >
+			<thead>
+			<tr>
+			<td id="ticker"><h2>TICKER</h2></td><td id="price"><h2>PRICE</h2></td>
+			</tr>
+			</thead>
+			
+			<tbody>
+			
+			<tr><td>WIPRO</td><td><input type="text" id="wipro" readonly="readonly" value="00.00"></input></td></tr>
+			<tr><td>INFY</td><td><input type="text" id="infosys" readonly="readonly" value="00.00"></input></td></tr>
+			<tr><td>TCS</td><td><input type="text" id="tcs" readonly="readonly" value="00.00"></input></td></tr>
+			<tr><td>TECHM</td><td><input type="text" id="techm" readonly="readonly" value="00.00"></input></td></tr>
+			</tbody>
+		</table >
+</div><br><br>
+<div id="data" align="center">
+	
+			<h1>Stock Trading</h1>
+				<table>
+					<tr><td>Ticker:</td><td><input type="text" id="tname"></input></td></tr>
+					<tr><td>Quantity:</td><td><input type="text" id="quan"></input></td></tr>
+					<tr><td><input type="submit" value="Submit" onclick="javascript:submit()"></td></tr>
+				</table>
+</div>
+
+</body>
+</html>
