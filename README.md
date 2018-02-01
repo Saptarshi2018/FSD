@@ -5,3 +5,4 @@
 #Valid ticker symbols for Infosys are (Infosys,infosys,INFOSYS,infy)
 #Valid ticker symbols for TCS are (Tcs,tcs,TCS)
 #Valid ticker symbols for TECHM are (Techm,techm,TECHM)
+#Tested on Chrome,Firefox,IE 11
